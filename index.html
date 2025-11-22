@@ -1,1205 +1,530 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MR SIGMAGAME - البطاقة التعريفية الرسمية</title>
-
-  <!-- خط عربي لطيف -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #020617;
-      --bg-soft: #020617;
-      --card: #020617;
-      --primary: #0ea5e9;
-      --primary-soft: rgba(56, 189, 248, 0.12);
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
-      --border: #1f2937;
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --section-bg: #020617;
-      --danger: #f97373;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0%, #000000 55%, #020617 100%);
-      color: var(--text-main);
-      direction: rtl;
-      min-height: 100vh;
-      scroll-behavior: smooth;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ========== الهيكل الأساسي ========== */
-
-    .page-wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.7));
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* ========== الهيدر ========== */
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, var(--accent), var(--primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 20px;
-      color: #020617;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-    }
-
-    .brand-text-main {
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .brand-text-sub {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-    }
-
-    .nav-links a {
-      padding: 4px 9px;
-      border-radius: 999px;
-      color: var(--text-soft);
-      border: 1px solid transparent;
-      transition: 0.18s;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-      border-color: rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .nav-links a.nav-active {
-      color: #020617;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-color: transparent;
-      font-weight: 700;
-      box-shadow: 0 0 24px rgba(34, 197, 94, 0.35);
-    }
-
-    .nav-cta {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn-nav {
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      cursor: pointer;
-      transition: 0.18s;
-      white-space: nowrap;
-    }
-
-    .btn-nav-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-color: transparent;
-      color: #020617;
-      font-weight: 700;
-    }
-
-    .btn-nav:hover {
-      transform: translateY(-1px);
-      border-color: var(--primary);
-    }
-
-    .btn-nav-primary:hover {
-      filter: brightness(1.05);
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
-    }
-
-    .nav-toggle {
-      display: none;
-      border: none;
-      background: transparent;
-      color: var(--text-main);
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    /* ========== الهيرو ========== */
-
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      padding: 32px 0 40px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .hero-badge-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.95);
-      margin-bottom: 14px;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #22c55e, #16a34a);
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
-    }
-
-    .hero-title {
-      font-size: 28px;
-      line-height: 1.4;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 13px;
-      color: var(--text-soft);
-      margin-bottom: 16px;
-      line-height: 1.8;
-    }
-
-    .hero-list {
-      list-style: none;
-      font-size: 12px;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .hero-list-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.2);
-      border: 1px solid rgba(34, 197, 94, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #bbf7d0;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 13px;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: 0.18s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-color: transparent;
-      color: #020617;
-      font-weight: 700;
-    }
-
-    .btn-outline {
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .btn span.icon {
-      font-size: 15px;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      border-color: var(--primary);
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hero-note b {
-      color: #bfdbfe;
-    }
-
-    /* ========== بطاقة الهيرو اليسار ========== */
-
-    .hero-card-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-card {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 22px;
-      padding: 18px 16px 16px;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000000 100%);
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .hero-card-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-card-logo-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, var(--accent), var(--primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 24px;
-      color: #020617;
-    }
-
-    .hero-card-name-main {
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .hero-card-name-sub {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hero-card-badge {
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.15);
-      color: #bbf7d0;
-      border: 1px solid rgba(22, 163, 74, 0.6);
-    }
-
-    .hero-card-body {
-      font-size: 11px;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-      line-height: 1.7;
-    }
-
-    .hero-card-divider {
-      height: 1px;
-      width: 100%;
-      background: linear-gradient(to right, transparent, #111827, transparent);
-      margin: 8px 0 10px;
-    }
-
-    .hero-card-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-      font-size: 11px;
-    }
-
-    .hero-card-label {
-      color: var(--text-soft);
-    }
-
-    .hero-card-value {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-card-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .pill {
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: #cbd5f5;
-    }
-
-    .pill.green {
-      background: var(--accent-soft);
-      border-color: rgba(34, 197, 94, 0.7);
-      color: #bbf7d0;
-    }
-
-    .pill.blue {
-      background: var(--primary-soft);
-      border-color: rgba(56, 189, 248, 0.7);
-      color: #e0f2fe;
-    }
-
-    .hero-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-      font-size: 10px;
-      color: var(--text-soft);
-    }
-
-    .dot-online {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .dot-online span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #22c55e, #15803d);
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
-    }
-
-    /* ========== الأقسام ========== */
-
-    section {
-      padding: 32px 0;
-    }
-
-    .section-header {
-      margin-bottom: 18px;
-    }
-
-    .section-eyebrow {
-      font-size: 11px;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .section-sub {
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.98);
-      border-radius: 16px;
-      padding: 14px 12px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: #e5e7eb;
-      min-height: 100px;
-    }
-
-    .card-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .card-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 6px;
-    }
-
-    .tag {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid #374151;
-      color: #9ca3af;
-    }
-
-    .tag.green {
-      background: var(--accent-soft);
-      border-color: rgba(34, 197, 94, 0.7);
-      color: #bbf7d0;
-    }
-
-    .tag.blue {
-      background: var(--primary-soft);
-      border-color: rgba(56, 189, 248, 0.7);
-      color: #e0f2fe;
-    }
-
-    .card p {
-      font-size: 11px;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-
-    /* ========== جدول الشرائح ========== */
-
-    .tiers-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .tier-card {
-      background: rgba(15, 23, 42, 0.98);
-      border-radius: 16px;
-      padding: 12px 10px;
-      border: 1px solid var(--border);
-      font-size: 11px;
-    }
-
-    .tier-name {
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .tier-limit {
-      font-size: 11px;
-      color: var(--text-soft);
-      margin-bottom: 4px;
-    }
-
-    .tier-benefit {
-      font-size: 10px;
-      color: #e5e7eb;
-    }
-
-    .tier-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 9px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid #374151;
-      color: #e5e7eb;
-      margin-bottom: 6px;
-    }
-
-    .tier-label span {
-      font-size: 10px;
-    }
-
-    .tier-label.boss {
-      background: linear-gradient(135deg, #facc15, #f97316);
-      border-color: transparent;
-      color: #020617;
-      font-weight: 700;
-    }
-
-    /* ========== طرق الدفع ========== */
-
-    .payments-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .pay-card {
-      background: rgba(15, 23, 42, 0.98);
-      border-radius: 14px;
-      padding: 10px 9px;
-      border: 1px solid var(--border);
-      font-size: 11px;
-    }
-
-    .pay-name {
-      font-weight: 700;
-      margin-bottom: 3px;
-    }
-
-    .pay-tag {
-      font-size: 9px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid #374151;
-      color: #9ca3af;
-      display: inline-block;
-      margin-bottom: 4px;
-    }
-
-    .pay-note {
-      font-size: 10px;
-      color: var(--text-soft);
-    }
-
-    /* ========== التواصل ========== */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 18px;
-      margin-top: 14px;
-    }
-
-    .contact-box {
-      background: rgba(15, 23, 42, 0.98);
-      border-radius: 16px;
-      padding: 14px 12px;
-      border: 1px solid var(--border);
-      font-size: 11px;
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .contact-chip {
-      flex: 1;
-      min-width: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 9px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      border: 1px solid #1f2937;
-      background: rgba(15, 23, 42, 0.98);
-      color: #e5e7eb;
-      transition: 0.18s;
-    }
-
-    .contact-chip.whatsapp {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #020617;
-      border-color: transparent;
-      font-weight: 700;
-    }
-
-    .contact-chip:hover {
-      transform: translateY(-1px);
-      border-color: var(--primary);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.27);
-    }
-
-    .contact-chip.whatsapp:hover {
-      box-shadow: 0 0 16px rgba(34, 197, 94, 0.5);
-    }
-
-    .contact-note {
-      font-size: 10px;
-      color: var(--text-soft);
-      margin-top: 6px;
-    }
-
-    /* ========== الفوتر ========== */
-
-    footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.95);
-      background: #020617;
-    }
-
-    .footer-inner {
-      padding: 12px 0 14px;
-      font-size: 10px;
-      color: var(--text-soft);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-inner span strong {
-      color: #e5e7eb;
-    }
-
-    /* ========== ريسبونسف ========== */
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card-wrap {
-        order: -1;
-      }
-      .hero {
-        padding-top: 20px;
-      }
-      .grid-3,
-      .grid-4,
-      .tiers-grid,
-      .payments-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-toggle {
-        display: block;
-      }
-      .nav-mobile-open .nav-links {
-        display: flex;
-        position: absolute;
-        inset-inline: 0;
-        top: 52px;
-        padding: 8px 16px 10px;
-        background: rgba(2, 6, 23, 0.98);
-        border-bottom: 1px solid #111827;
-        justify-content: flex-start;
-        overflow-x: auto;
-      }
-      .nav {
-        position: relative;
-      }
-      .hero-title {
-        font-size: 23px;
-      }
-      .payments-grid,
-      .grid-3,
-      .grid-4,
-      .tiers-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card {
-        max-width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MR SIGMAGAME - بطاقة تعريفية</title>
+
+    <!-- خط عربي جميل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+    <!-- أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top, #1e88e5 0, #0b1726 40%, #02040a 100%);
+            --card-bg: rgba(10, 18, 35, 0.96);
+            --primary: #1e88e5;
+            --primary-soft: rgba(30, 136, 229, 0.2);
+            --accent: #00e5ff;
+            --text-main: #ffffff;
+            --text-muted: #a9b4c8;
+            --danger: #ff5252;
+            --radius-xl: 24px;
+            --radius-lg: 18px;
+            --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.6);
+            --border-soft: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 12px;
+            overflow-x: hidden;
+        }
+
+        /* خلفية دوائر */
+        .bg-orbits {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 229, 255, 0.06);
+            filter: blur(0.2px);
+        }
+
+        .orbit.o1 {
+            width: 520px;
+            height: 520px;
+            top: -200px;
+            left: -120px;
+        }
+
+        .orbit.o2 {
+            width: 620px;
+            height: 620px;
+            bottom: -260px;
+            right: -180px;
+        }
+
+        .orbit.o3 {
+            width: 260px;
+            height: 260px;
+            top: 55%;
+            left: 10%;
+        }
+
+        .glow-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00e5ff, transparent 70%);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+        }
+
+        .glow-dot.d1 {
+            top: 15%;
+            right: 16%;
+        }
+
+        .glow-dot.d2 {
+            bottom: 20%;
+            left: 16%;
+        }
+
+        /* الكرت الأساسي */
+        .card-wrapper {
+            position: relative;
+            max-width: 440px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .brand-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            background: radial-gradient(circle at top left, rgba(0, 229, 255, 0.16), transparent 55%);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .brand-chip i {
+            font-size: 12px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: var(--border-soft);
+            padding: 26px 22px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(30, 136, 229, 0.25), transparent 60%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .card-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-circle {
+            width: 98px;
+            height: 98px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            background: radial-gradient(circle at 30% 20%, #ffffff 0, #1e88e5 35%, #0d47a1 70%, #020618 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px rgba(3, 155, 229, 0.25), 0 18px 40px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+
+        .logo-circle img {
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+        }
+
+        .logo-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 11px;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-badge i {
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            margin: 12px 0 18px;
+            background: linear-gradient(90deg, transparent, rgba(144, 164, 174, 0.6), transparent);
+        }
+
+        .tagline {
+            font-size: 0.86rem;
+            color: #d0e2ff;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            padding: 5px 10px;
+            font-size: 0.72rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-pill i {
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .btn-link {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            background: rgba(15, 23, 42, 0.9);
+            color: #e2e8f0;
+            padding: 11px 14px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: all 0.18s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-link-main {
+            background: linear-gradient(135deg, #1e88e5, #00e5ff);
+            border-color: transparent;
+            color: #0f172a;
+            font-weight: 700;
+            box-shadow: 0 12px 30px rgba(33, 150, 243, 0.55);
+        }
+
+        .btn-link-main span {
+            color: #0b1020;
+        }
+
+        .btn-link-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-link-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn-link-main .btn-link-icon {
+            background: rgba(15, 23, 42, 0.09);
+            color: #0b1020;
+        }
+
+        .btn-link-whatsapp .btn-link-icon {
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+        }
+
+        .btn-link-community .btn-link-icon {
+            background: rgba(244, 180, 0, 0.15);
+            color: #f4b400;
+        }
+
+        .btn-link-telegram .btn-link-icon {
+            background: rgba(0, 184, 255, 0.16);
+            color: #00b8ff;
+        }
+
+        .btn-link span {
+            display: block;
+        }
+
+        .btn-title {
+            font-size: 0.92rem;
+        }
+
+        .btn-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .btn-arrow {
+            font-size: 0.9rem;
+            color: rgba(148, 163, 184, 0.9);
+        }
+
+        .btn-link-main .btn-arrow {
+            color: #020617;
+        }
+
+        .btn-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.65);
+            border-color: rgba(148, 163, 184, 0.8);
+            text-decoration: none;
+        }
+
+        .btn-link-main:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 16px 34px rgba(33, 150, 243, 0.8);
+            filter: brightness(1.03);
+        }
+
+        .small-note {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .small-note i {
+            color: var(--accent);
+            margin-left: 4px;
+        }
+
+        .footer {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.72rem;
+            color: rgba(148, 163, 184, 0.9);
+        }
+
+        .footer span {
+            color: var(--accent);
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 22px 16px 18px;
+            }
+
+            .logo-circle {
+                width: 86px;
+                height: 86px;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .btn-link {
+                padding: 10px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="page-wrap">
-    <!-- ========== الهيدر ========== -->
-    <header>
-      <div class="container">
-        <nav class="nav" id="nav">
-          <div class="brand">
-            <div class="brand-logo">Σ</div>
-            <div>
-              <div class="brand-text-main">MR SIGMAGAME</div>
-              <div class="brand-text-sub">منصة شحن ألعاب وخدمات رقمية</div>
-            </div>
-          </div>
+    <!-- خلفية ديكورية -->
+    <div class="bg-orbits">
+        <div class="orbit o1"></div>
+        <div class="orbit o2"></div>
+        <div class="orbit o3"></div>
+        <div class="glow-dot d1"></div>
+        <div class="glow-dot d2"></div>
+    </div>
 
-          <div class="nav-links" id="navLinks">
-            <a href="#home" class="nav-active">الرئيسية</a>
-            <a href="#services">الخدمات</a>
-            <a href="#tiers">نظام الشرائح</a>
-            <a href="#payments">طرق الدفع</a>
-            <a href="#contact">التواصل والدعم</a>
-          </div>
+    <!-- الكرت -->
+    <div class="card-wrapper">
+        <div class="brand-chip">
+            <i class="fas fa-bolt"></i>
+            MR SIGMAGAME · DIGITAL SERVICES
+        </div>
 
-          <div class="nav-cta">
-            <button class="btn-nav" onclick="scrollToSection('contact')">دعم فني</button>
-            <a class="btn-nav btn-nav-primary" href="https://mr-sigmagame.shop" target="_blank">
-              المتجر الرسمي
-            </a>
-            <button class="nav-toggle" onclick="toggleNav()">☰</button>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- ========== هيرو ========== -->
-      <section id="home" class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div>
-              <div class="hero-badge-row">
-                <span class="hero-badge-dot"></span>
-                <span>بطاقة تعريفية رسمية لمتجر MR SIGMAGAME</span>
-              </div>
-
-              <h1 class="hero-title">
-                كل قنوات سيجما من مكان واحد<br />
-                <span>متجر، دعم، مجتمع، وتحديثات مباشرة</span>
-              </h1>
-
-              <p class="hero-sub">
-                MR SIGMAGAME منصة متخصصة في شحن
-                <b>PUBG – Free Fire – Jawaker – Razer Gold</b>  
-                وغيرها من الخدمات الرقمية للتجار والأفراد، مع نظام شرائح
-                يقدّر حجم شغلك، وأسعار مميزة بحسب إيداعاتك الشهرية.
-              </p>
-
-              <ul class="hero-list">
-                <li>
-                  <div class="hero-list-dot">✓</div>
-                  <span>تنفيذ سريع للطلبات مع متابعة فورية عبر الواتساب</span>
-                </li>
-                <li>
-                  <div class="hero-list-dot">✓</div>
-                  <span>نظام شرائح خاص للتجّار: كل ما تكبر إيداعاتك، تنخفض أسعارك</span>
-                </li>
-                <li>
-                  <div class="hero-list-dot">✓</div>
-                  <span>توثيق حسابات، كشف حركات، ودعم فني حقيقي مش أوتوماتيكي</span>
-                </li>
-              </ul>
-
-              <div class="hero-cta-row">
-                <a class="btn btn-primary" href="https://mr-sigmagame.shop" target="_blank">
-                  <span class="icon">🛒</span>
-                  <span>الدخول إلى المتجر الرسمي</span>
-                </a>
-
-                <a class="btn btn-outline" href="https://wa.me/message/LKMBXCZM5XSXI1" target="_blank">
-                  <span class="icon">💬</span>
-                  <span>فتح محادثة واتساب مع الدعم</span>
-                </a>
-              </div>
-
-              <div class="hero-note">
-                <b>ملاحظة:</b> هذه البطاقة تعريفية فقط، كل عمليات الشحن والدفع تتم
-                داخل الموقع الرسمي <b>mr-sigmagame.shop</b>.
-              </div>
+        <div class="card">
+            <div class="logo-badge">
+                <i class="fas fa-shield-halved"></i>
+                منصة موثوقة للتجار والأفراد
             </div>
 
-            <div class="hero-card-wrap">
-              <div class="hero-card">
-                <div class="hero-card-header">
-                  <div class="hero-card-logo">
-                    <div class="hero-card-logo-circle">Σ</div>
-                    <div>
-                      <div class="hero-card-name-main">MR SIGMAGAME</div>
-                      <div class="hero-card-name-sub">بطاقة تعريف حساب تاجر / عميل</div>
+            <div class="card-inner">
+                <div class="logo-circle">
+                    <!-- غيّر رابط الشعار لو حاب -->
+                    <img src="https://mr-sigmagame.shop/assets/img/logo.png" alt="MR SIGMAGAME Logo" onerror="this.src='https://i.ibb.co/FH1V9Zg/sigma-temp-logo.png';" />
+                </div>
+
+                <h1>MR SIGMAGAME</h1>
+                <p class="subtitle">منصة شحن ألعاب وخدمات رقمية – للتجار والأفراد – نظام أسعار شرائح وخصومات حقيقية</p>
+
+                <div class="divider"></div>
+
+                <p class="tagline">
+                    أقوى منصة شحن في الأردن والمنطقة، تنفيذ سريع، دعم فني فعّال، وأسعار خاصة للتجّار الكبار 💙
+                </p>
+
+                <div class="stats">
+                    <div class="stat-pill">
+                        <i class="fas fa-users"></i>
+                        +500 عميل فعّال
                     </div>
-                  </div>
-                  <div class="hero-card-badge">متجر معتمد لخدمات الألعاب</div>
+                    <div class="stat-pill">
+                        <i class="fas fa-gamepad"></i>
+                        PUBG · Free Fire · Jawaker
+                    </div>
+                    <div class="stat-pill">
+                        <i class="fas fa-layer-group"></i>
+                        نظام شرائح للتجّار
+                    </div>
                 </div>
 
-                <div class="hero-card-body">
-                  هذه البطاقة تختصر لك كل الطرق الرسمية للتواصل مع سيجما،  
-                  وبتسهّل عليك توجيه عملاءك للموقع، الدعم، والمجتمع.
+                <div class="buttons">
+                    <!-- المتجر الرسمي -->
+                    <a class="btn-link btn-link-main" href="https://mr-sigmagame.shop/" target="_blank" rel="noopener">
+                        <div class="btn-link-left">
+                            <div class="btn-link-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div>
+                                <span class="btn-title">دخول المتجر الرسمي</span>
+                                <span class="btn-desc">تنفيذ طلباتك تلقائياً على مدار الساعة</span>
+                            </div>
+                        </div>
+                        <div class="btn-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </a>
+
+                    <!-- واتساب دعم فني -->
+                    <a class="btn-link btn-link-whatsapp" href="https://wa.me/message/LKMBXCZM5XSXI1" target="_blank" rel="noopener">
+                        <div class="btn-link-left">
+                            <div class="btn-link-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="btn-title">تواصل مباشر عبر الواتساب</span>
+                                <span class="btn-desc">تفعيل حساب · حل مشكلة · متابعة طلب</span>
+                            </div>
+                        </div>
+                        <div class="btn-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </a>
+
+                    <!-- مجتمع سيجما (غيّر الرابط إذا عندك قروب معيّن) -->
+                    <a class="btn-link btn-link-community" href="#" target="_blank">
+                        <div class="btn-link-left">
+                            <div class="btn-link-icon">
+                                <i class="fas fa-users-gear"></i>
+                            </div>
+                            <div>
+                                <span class="btn-title">الانضمام لمجتمع سيجما</span>
+                                <span class="btn-desc">قنوات وعروض خاصة للتجّار والعملاء الدائمين</span>
+                            </div>
+                        </div>
+                        <div class="btn-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </a>
+
+                    <!-- قناة تيليجرام / أي قناة إعلانات -->
+                    <a class="btn-link btn-link-telegram" href="#" target="_blank">
+                        <div class="btn-link-left">
+                            <div class="btn-link-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div>
+                                <span class="btn-title">قناة التليجرام</span>
+                                <span class="btn-desc">تنبيهات التحديثات والعروض اليومية</span>
+                            </div>
+                        </div>
+                        <div class="btn-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="hero-card-divider"></div>
+                <p class="small-note">
+                    <i class="fas fa-circle-info"></i>
+                    في حال تعطل المتجر لأي سبب، يرجى التواصل عبر الواتساب أو التليجرام لمتابعة طلباتك يدويًا.
+                </p>
 
-                <div class="hero-card-row">
-                  <div>
-                    <div class="hero-card-label">نوع المنصة</div>
-                    <div class="hero-card-value">شحن ألعاب وخدمات رقمية</div>
-                  </div>
-                  <div>
-                    <div class="hero-card-label">حالة النظام</div>
-                    <div class="hero-card-value">نشِط – مراقبة مستمرة</div>
-                  </div>
+                <div class="footer">
+                    © <span>MR SIGMAGAME</span> · جميع الحقوق محفوظة
                 </div>
-
-                <div class="hero-card-pills">
-                  <div class="pill green">PUBG UC – Free Fire – Jawaker</div>
-                  <div class="pill blue">نظام شرائح للتجّار</div>
-                  <div class="pill">دعم عبر الواتساب 24/7 قدر الإمكان</div>
-                </div>
-
-                <div class="hero-card-footer">
-                  <div class="dot-online">
-                    <span></span>
-                    <span>متجر سيجما قيد التشغيل</span>
-                  </div>
-                  <div>mr-sigmagame.shop</div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
-
-      <!-- ========== الخدمات ========== -->
-      <section id="services">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">الخدمات الرئيسية</div>
-            <div class="section-title">شو بتقدر تشحن من خلال MR SIGMAGAME؟</div>
-            <div class="section-sub">
-              هذه مجرد لمحة سريعة، التفاصيل والأسعار الدقيقة دايماً بتكون من خلال الموقع الرسمي.
-            </div>
-          </div>
-
-          <div class="grid-3">
-            <div class="card">
-              <div class="card-title">PUBG Mobile UC</div>
-              <div class="card-tag-row">
-                <span class="tag blue">شحن مباشر</span>
-                <span class="tag">دعم كل السيرفرات</span>
-              </div>
-              <p>
-                شحن UC بكافة الفئات للتجّار والأفراد، مع إمكانية طلب كميات كبيرة
-                للتوزيع وبأسعار خاصة حسب شريحتك الشهرية.
-              </p>
-            </div>
-
-            <div class="card">
-              <div class="card-title">FREE FIRE & Jawaker</div>
-              <div class="card-tag-row">
-                <span class="tag green">خصومات للتجّار</span>
-                <span class="tag">تنفيذ سريع</span>
-              </div>
-              <p>
-                شحن جواهر Free Fire، وشراء باقات جواكر للتجّار، مع متابعة
-                دقيقة للطلبات وحفظ سجل كامل داخل حسابك.
-              </p>
-            </div>
-
-            <div class="card">
-              <div class="card-title">خدمات رقمية أخرى</div>
-              <div class="card-tag-row">
-                <span class="tag">Razer Gold</span>
-                <span class="tag">بطاقات ومتاجر أخرى</span>
-              </div>
-              <p>
-                إضافة مستمرة لخدمات جديدة: بطاقات، اشتراكات، وخدمات رقمية
-                حسب طلب التجّار واحتياج السوق.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== نظام الشرائح ========== -->
-      <section id="tiers">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">نظام الشرائح للتجّار</div>
-            <div class="section-title">كل ما كبرت بإيداعاتك، كبر معك سعر الشغل</div>
-            <div class="section-sub">
-              هذه الأرقام مثال تعريفي سريع، نظام الشرائح الفعلي وشروطه يتم توضيحه داخل حسابك في الموقع.
-            </div>
-          </div>
-
-          <div class="tiers-grid">
-            <div class="tier-card">
-              <div class="tier-label">
-                <span>TOP 1</span>
-              </div>
-              <div class="tier-name">شريحة العملاء الجدد</div>
-              <div class="tier-limit">من أول إيداع وحتى حد معيّن شهرياً</div>
-              <div class="tier-benefit">
-                مناسبة للبدايات والتجربة، مع إمكانية الترقية تلقائياً عند زيادة حجم الإيداعات.
-              </div>
-            </div>
-
-            <div class="tier-card">
-              <div class="tier-label">
-                <span>TOP 2</span>
-              </div>
-              <div class="tier-name">شريحة تجّار ناشئين</div>
-              <div class="tier-limit">بعد بلوغ حد إيداع شهري معيّن</div>
-              <div class="tier-benefit">
-                أسعار أفضل من العميل العادي، مناسبة للتجّار يلي شغلهم ثابت ومتابع.
-              </div>
-            </div>
-
-            <div class="tier-card">
-              <div class="tier-label">
-                <span>TOP 3</span>
-              </div>
-              <div class="tier-name">شريحة تجّار محترفين</div>
-              <div class="tier-limit">إيداعات شهرية أعلى وبشكل مستمر</div>
-              <div class="tier-benefit">
-                خصومات أعلى، أولوية بتنفيذ الطلبات، ودعم مباشر بشكل أسرع.
-              </div>
-            </div>
-
-            <div class="tier-card">
-              <div class="tier-label boss">
-                <span>BOOS</span> / شريحة الزعيم
-              </div>
-              <div class="tier-name">كبار التجّار</div>
-              <div class="tier-limit">شروط خاصة وإيداعات عالية جداً</div>
-              <div class="tier-benefit">
-                أسعار خاصة، تواصل مباشر مع الإدارة، وتعامل استثنائي
-                بما يتناسب مع حجم شغلك وثقتك بسيجما.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== طرق الدفع ========== -->
-      <section id="payments">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">الإيداع والدفع</div>
-            <div class="section-title">طرق الدفع المعتمدة في MR SIGMAGAME</div>
-            <div class="section-sub">
-              تفاصيل كل طريقة (الحدود – العمولة – وقت التحقق) بتظهر لك داخل حسابك في المتجر قبل ما ترسل أي حوالة.
-            </div>
-          </div>
-
-          <div class="payments-grid">
-            <div class="pay-card">
-              <div class="pay-name">CliQ – بنك الإتحاد</div>
-              <div class="pay-tag">#SIGMACARD</div>
-              <div class="pay-note">
-                إيداع سريع وآمن عبر نظام كليك، مناسب للتجّار داخل الأردن.
-              </div>
-            </div>
-
-            <div class="pay-card">
-              <div class="pay-name">محافظ إلكترونية محلية</div>
-              <div class="pay-tag">Orange Money / Zain Cash وغيرهم</div>
-              <div class="pay-note">
-                متاح الإيداع من عدة محافظ إلكترونية، مع تحديد العمولة لكل فئة داخل صفحة الإيداع.
-              </div>
-            </div>
-
-            <div class="pay-card">
-              <div class="pay-name">وكلاء خارجيين</div>
-              <div class="pay-tag">تحويل من خارج الأردن</div>
-              <div class="pay-note">
-                للتجّار خارج الأردن يتم التنسيق مع الإدارة والدعم الفني لتحديد طريقة التحويل الأنسب.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== التواصل ========== -->
-      <section id="contact">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">التواصل والدعم الفني</div>
-            <div class="section-title">أي سؤال عن الإيداعات أو الشحن؟ فريق سيجما بسمعك</div>
-            <div class="section-sub">
-              استخدم أحد القنوات الرسمية التالية للتواصل. أي قناة خارجها تُعتبر غير تابعة للمتجر.
-            </div>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-box">
-              <div class="card-title">قنوات التواصل الرسمية</div>
-              <p>
-                مفضّل دائماً إنك تستخدم الواتساب للدعم الفني والمتابعة
-                لأنه مربوط مع نظام المتجر وبيسهّل علينا نعرف حسابك وحركاتك.
-              </p>
-
-              <div class="contact-row">
-                <a class="contact-chip whatsapp" href="https://wa.me/message/LKMBXCZM5XSXI1" target="_blank">
-                  <span>💬</span>
-                  <span>فتح محادثة واتساب مع الدعم</span>
-                </a>
-
-                <a class="contact-chip" href="https://mr-sigmagame.shop" target="_blank">
-                  <span>🛒</span>
-                  <span>الدخول إلى الموقع ومركز الحسابات</span>
-                </a>
-              </div>
-
-              <div class="contact-note">
-                * فريق الدعم بشتغل أغلب اليوم، لكن أحياناً الضغط يكون عالي.  
-                إذا تأخّر الرد شوي، ما تنسى إننا بنحاول نلحق على الجميع 🙏
-              </div>
-            </div>
-
-            <div class="contact-box">
-              <div class="card-title">تنبيهات مهمة</div>
-              <ul class="hero-list">
-                <li>
-                  <div class="hero-list-dot">!</div>
-                  <span>لا ترسل أي حوالة على حساب شخصي غير مذكور داخل صفحة الإيداع في الموقع.</span>
-                </li>
-                <li>
-                  <div class="hero-list-dot">!</div>
-                  <span>دايماً احتفظ بوصل التحويل واضح (قيمة – تاريخ – وقت – اسم مستلم).</span>
-                </li>
-                <li>
-                  <div class="hero-list-dot">!</div>
-                  <span>في حال صار خلل أو تأخير، التواصل يكون فقط عبر قنوات سيجما الرسمية الموضحة هنا.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ========== الفوتر ========== -->
-    <footer>
-      <div class="container">
-        <div class="footer-inner">
-          <span>جميع الحقوق محفوظة © <span id="year"></span> <strong>MR SIGMAGAME</strong></span>
-          <span>هذه صفحة تعريفية فقط، الموقع الرسمي: <strong>mr-sigmagame.shop</strong></span>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // سنة الفوتر
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // سكرول ناعم لقسم معيّن
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const top = el.offsetTop - 70;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-
-    // موبايل منيو
-    function toggleNav() {
-      const nav = document.getElementById("nav");
-      nav.classList.toggle("nav-mobile-open");
-    }
-
-    // تحديث حالة اللينك النشط في الهيدر
-    const sections = ["home", "services", "tiers", "payments", "contact"];
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    function updateActiveNav() {
-      const scrollPos = window.scrollY + 120;
-      let activeId = "home";
-
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (scrollPos >= el.offsetTop) {
-          activeId = id;
-        }
-      });
-
-      navLinks.forEach(link => {
-        if (link.getAttribute("href") === "#" + activeId) {
-          link.classList.add("nav-active");
-        } else {
-          link.classList.remove("nav-active");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", updateActiveNav);
-    window.addEventListener("load", updateActiveNav);
-  </script>
+    </div>
 </body>
 </html>
