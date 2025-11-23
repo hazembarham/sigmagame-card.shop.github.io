@@ -257,17 +257,73 @@
       color: var(--accent);
     }
 
-    /* العمود الأيمن – كروت سريعة */
+    /* العمود الأيمن – كروت سريعة + كروت الأقسام + الميني */
     .side-column {
       display: grid;
       gap: 12px;
     }
 
-    .side-card {
-      background: rgba(0, 0, 0, 0.42);
+    /* ✨ كروت زجاجية مع انعكاس – side-card + mini-card + section-block */
+    .side-card,
+    .mini-card,
+    .section-block {
+      position: relative;
+      overflow: hidden;
       border-radius: 18px;
       padding: 12px 14px;
-      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: transform 0.25s ease,
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease,
+                  background 0.25s ease;
+    }
+
+    .side-card::before,
+    .mini-card::before,
+    .section-block::before {
+      content: "";
+      position: absolute;
+      top: -80%;
+      left: -40%;
+      width: 180%;
+      height: 80%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.28),
+        rgba(255, 255, 255, 0.03),
+        transparent
+      );
+      opacity: 0;
+      transform: translateY(0);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+
+    .side-card:hover,
+    .mini-card:hover,
+    .section-block:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .side-card:hover::before,
+    .mini-card:hover::before,
+    .section-block:hover::before {
+      opacity: 1;
+      transform: translateY(35%);
+    }
+
+    .side-card:active,
+    .mini-card:active,
+    .section-block:active {
+      transform: translateY(-2px) scale(0.98);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
 
     .side-card h3 {
@@ -276,6 +332,8 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      position: relative;
+      z-index: 1;
     }
 
     .side-card h3 i {
@@ -288,6 +346,8 @@
       font-size: 13px;
       color: var(--text-muted);
       line-height: 1.7;
+      position: relative;
+      z-index: 1;
     }
 
     .chip-row {
@@ -295,6 +355,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      position: relative;
+      z-index: 1;
     }
 
     .chip {
@@ -314,10 +376,7 @@
     }
 
     .section-block {
-      background: rgba(0, 0, 0, 0.45);
-      border-radius: 20px;
       padding: 18px 16px 16px;
-      border: 1px solid var(--border-soft);
     }
 
     .section-block h2 {
@@ -326,6 +385,8 @@
       display: flex;
       align-items: center;
       gap: 7px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-block h2 i {
@@ -338,6 +399,8 @@
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.9;
+      position: relative;
+      z-index: 1;
     }
 
     .cards-grid {
@@ -345,13 +408,12 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 10px;
       margin-top: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .mini-card {
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 14px;
       padding: 10px 10px 9px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 13px;
     }
 
@@ -433,7 +495,6 @@
       <section class="hero-card" id="top">
         <div class="hero-header">
           <div class="hero-logo">
-            <!-- 🔁 غير رابط الصورة لو عندك لوجو أفضل -->
             <img src="https://api.mr-sigmagame.shop/images/favicon/favicon.png" alt="SIGMA GAME Logo">
           </div>
           <div class="hero-title">
@@ -458,13 +519,11 @@
           </p>
 
           <div class="hero-cta-row">
-            <!-- 🔗 رابط المتجر الرسمي -->
             <a class="btn-main" href="https://mr-sigmagame.shop" target="_blank">
               <i class="fa-solid fa-cart-shopping"></i>
               دخول المتجر الرسمي
             </a>
 
-            <!-- 🔗 رابط المجتمع (غيّره لاحقاً) -->
             <a class="btn-ghost" href="#" target="_blank">
               <i class="fa-brands fa-whatsapp"></i>
               مجتمع SIGMA على الواتساب
@@ -472,7 +531,6 @@
           </div>
         </div>
 
-        <!-- نافيجيشن داخلي للأقسام -->
         <nav class="section-nav">
           <a href="#about"><i class="fa-solid fa-circle"></i>من نحن</a>
           <a href="#services"><i class="fa-solid fa-circle"></i>خدماتنا</a>
@@ -697,17 +755,19 @@
 
           <div class="mini-card">
             <strong>الدعم عبر واتساب</strong>
-            <span><a href="https://wa.me/962781913618" target="_blank">رقم الدعم الفني الرسمي:
-+962781913618
-متاح لحلّ المشكلات الفنية، متابعة التوثيق، واستعادة الحسابات فقط.
-⚠️ الدعم لا يطلب بيانات شخصية أو صور هويات نهائيًا.</a></span>
+            <span><a href="https://wa.me/962781913618" target="_blank">
+              رقم الدعم الفني الرسمي: +962781913618<br>
+              متاح لحلّ المشكلات الفنية، متابعة التوثيق، واستعادة الحسابات فقط.<br>
+              ⚠️ الدعم لا يطلب بيانات شخصية أو صور هويات نهائيًا.
+            </a></span>
           </div>
 
           <div class="mini-card">
             <strong>قناة التليجرام (إن وجدت)</strong>
-            <span><a href="https://t.me/Mr_SigmaGame" target="_blank">قناتنا الرسمية على التليجرام:
-منستخدمها فقط لنشر التنبيهات والتحديثات المهمة الخاصة بالأسعار، الصيانة، الإيقافات، التفعيل، والعروض.
-(في حال توفر القناة، سيتم إضافة الرابط هنا)</a></span>
+            <span><a href="https://t.me/Mr_SigmaGame" target="_blank">
+              قناتنا الرسمية على التليجرام:
+              منستخدمها فقط لنشر التنبيهات والتحديثات المهمة الخاصة بالأسعار، الصيانة، الإيقافات، التفعيل، والعروض.
+            </a></span>
           </div>
 
           <div class="mini-card">
