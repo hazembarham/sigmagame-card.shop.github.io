@@ -43,9 +43,13 @@
 
     /* شريط أعلى صغير */
     .top-bar {
-      max-width: 1040px;
+      max-width: 1200px;
       margin: 12px auto 0;
-      padding: 0 14px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .top-pill {
@@ -68,11 +72,23 @@
       color: var(--accent);
     }
 
+    .top-links {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .top-links a {
+      opacity: 0.8;
+    }
+    .top-links a:hover { opacity: 1; }
+
     /* الحاوية الرئيسية */
     .page {
-      max-width: 1040px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 12px 14px 40px;
+      padding: 18px 18px 40px;
     }
 
     .layout {
@@ -83,10 +99,10 @@
 
     /* الكرت الكبير (يسار) */
     .hero-card {
-      background: linear-gradient(145deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.2));
+      background: radial-gradient(circle at top left, rgba(255, 193, 7, 0.16), rgba(0, 0, 0, 0.6));
       border-radius: 22px;
-      padding: 22px 20px 20px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      padding: 24px 22px 22px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55);
       border: 1px solid var(--border-soft);
       position: relative;
       overflow: hidden;
@@ -137,12 +153,12 @@
 
     .hero-title h1 {
       margin: 0 0 4px;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 800;
     }
 
     .hero-title .subtitle {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-muted);
     }
 
@@ -150,7 +166,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 10px;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .pill {
@@ -187,7 +205,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .btn-main {
@@ -196,7 +214,7 @@
       background: linear-gradient(135deg, var(--accent), #ffd54f);
       color: #1b262c;
       border-radius: 14px;
-      padding: 10px 14px;
+      padding: 11px 14px;
       font-size: 14px;
       font-weight: 700;
       border: none;
@@ -213,7 +231,7 @@
     }
 
     .btn-ghost {
-      min-width: 130px;
+      min-width: 150px;
       background: rgba(0, 0, 0, 0.35);
       border-radius: 14px;
       padding: 9px 12px;
@@ -234,7 +252,7 @@
 
     /* نافيجشن للأقسام */
     .section-nav {
-      margin-top: 18px;
+      margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
@@ -370,9 +388,9 @@
 
     /* الأقسام تحت */
     .sections {
-      margin-top: 26px;
+      margin-top: 30px;
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
     .section-block {
@@ -405,7 +423,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
       margin-top: 10px;
       position: relative;
@@ -443,9 +461,9 @@
 
     /* الفوتر */
     footer {
-      max-width: 1040px;
-      margin: 20px auto 10px;
-      padding: 0 14px 8px;
+      max-width: 1200px;
+      margin: 24px auto 10px;
+      padding: 0 18px 8px;
       text-align: center;
       font-size: 12px;
       color: var(--text-muted);
@@ -463,17 +481,20 @@
         padding: 0;
       }
       .page {
-        padding: 10px 10px 26px;
+        padding: 12px 10px 26px;
       }
       .hero-card {
-        padding: 18px 14px 14px;
+        padding: 18px 14px 16px;
       }
       .hero-title h1 {
-        font-size: 20px;
+        font-size: 22px;
       }
       .hero-logo {
         width: 70px;
         height: 70px;
+      }
+      .hero-cta-row {
+        flex-direction: column;
       }
     }
   </style>
@@ -485,6 +506,11 @@
     <div class="top-pill">
       MR SIGMAGAME • DIGITAL SERVICES
       <span class="tag">منصة موثوقة للتجار والأفراد</span>
+    </div>
+    <div class="top-links">
+      <a href="#services">الخدمات</a>
+      <a href="#tiers">نظام الشرائح</a>
+      <a href="#contact">التواصل</a>
     </div>
   </div>
 
@@ -524,9 +550,9 @@
               دخول المتجر الرسمي
             </a>
 
-              <div class="hero-cta-row">
+            <!-- تأكد إنك عامل ملف products.html لو بدك تستخدمه -->
             <a class="btn-main" href="products.html" target="_blank">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i class="fa-solid fa-list"></i>
               عرض المنتجات
             </a>
 
@@ -537,7 +563,7 @@
           </div>
         </div>
 
-      
+        <!-- نافيجيشن داخلي للأقسام -->
         <nav class="section-nav">
           <a href="#about"><i class="fa-solid fa-circle"></i>من نحن</a>
           <a href="#services"><i class="fa-solid fa-circle"></i>خدماتنا</a>
