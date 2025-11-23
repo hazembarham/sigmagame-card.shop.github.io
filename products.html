@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>عرض منتجات SIGMA</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #002326;
+      font-family: 'Tajawal', sans-serif;
+      margin: 0;
+      padding: 25px;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffc107;
+      margin-bottom: 30px;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #004346;
+      border-radius: 18px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      transition: 0.25s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: #ffc107;
+      font-size: 20px;
+      margin: 8px 0;
+      font-weight: 700;
+    }
+
+    .card p {
+      color: #cfd8dc;
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+
+    .tag {
+      background: rgba(255,193,7,0.2);
+      color: #ffc107;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>📦 عرض منتجات SIGMA</h1>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="https://i.imgur.com/Iu6k7gZ.jpeg">
+    <h3>PUBG UC</h3>
+    <p>عرض شدّات ببجي فقط – بدون شراء</p>
+    <div class="tag">عرض فقط</div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.imgur.com/r3R9vnU.jpeg">
+    <h3>Free Fire Diamonds</h3>
+    <p>الألماس – عرض فقط غير قابل للشراء</p>
+    <div class="tag">عرض فقط</div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.imgur.com/YM6FqVt.jpeg">
+    <h3>Jawaker Tokens</h3>
+    <p>توكن جواكر – عرض فقط</p>
+    <div class="tag">عرض فقط</div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.imgur.com/Vc2Fr2k.jpeg">
+    <h3>Razer Gold</h3>
+    <p>رايزر جولد – عرض فقط</p>
+    <div class="tag">عرض فقط</div>
+  </div>
+
+</div>
+
+</body>
+</html>
