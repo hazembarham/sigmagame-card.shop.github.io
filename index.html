@@ -141,14 +141,15 @@
       justify-content: center;
     }
 
-   .hero-logo img {
-  width: 80px; /* أو أي حجم يناسبك */
-  height: 80px;
+  hero-logo img {
+  width: 100px;
+  aspect-ratio: 1 / 1;         /* يحافظ على الشكل الدائري */
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* اختياري: ظل خفيف */
-}
-    }
+  max-width: 100%;
+  height: auto;
+
+   }
 
     .hero-title {
       flex: 1;
